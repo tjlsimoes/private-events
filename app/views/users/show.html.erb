@@ -1,1 +1,10 @@
 <h1>Created events</h1>
+
+<% @created.each do |event|%>
+	<ul>
+		<li>
+		<p><%= event.title %></p>
+		<p><%= event.when %></p>
+		</li>
+	</ul>
+<% end %>
