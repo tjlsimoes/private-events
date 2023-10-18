@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
   def show
-    @created = User.find(self.id).created_events
+    @created = User.find(params[:id]).created_events
   end
 end
