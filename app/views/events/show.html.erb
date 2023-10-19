@@ -5,3 +5,15 @@
 <p>Updated at: <%= @event.updated_at %></p>
 <br>
 <p>Taking place in: <%= @event.when %></p>
+
+<% if @event.creator == current_user %>
+	<p>You created it... You better come!</p>
+<% elsif @event.attendees.where(id: current_user.id)%>
+	<p>You signed up for this event!</p>
+<% else %>
+	<%= form_with url: "/event_attendances/create", method: :get do |form| %>
+		<%= form.hidden_field :event_id, value: @event.id %>
+		<%= form.hidden_field :id, value: current_user.id %>
+		<%= form.submit "Sign up to attend here!"%>
+	<% end %>
+<% end%>
