@@ -1,10 +1,10 @@
 <h1>Events</h1>
 
-<% @events.each do |event|%>
-	<ul>
+<ul>
+	<% @events.each do |event|%>
 		<li>
 		<p><%= event.title %></p>
 		<p><%= event.when %></p>
 		</li>
-	</ul>
-<% end %>
+	<% end %>
+</ul>

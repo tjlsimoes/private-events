@@ -18,11 +18,11 @@
 
 <% if @event.attendees.any? %>
 	<p>Attending:</p>
-	<% @event.attendees.each do |attendee|%>
-		<ul>
+	<ul>
+		<% @event.attendees.each do |attendee|%>
 			<li>
 			<p><%= attendee.username %></p>
 			</li>
-		</ul>
-	<% end %>
+		<% end %>
+	</ul>
 <% end %>
