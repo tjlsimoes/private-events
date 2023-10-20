@@ -4,11 +4,14 @@ class Event < ApplicationRecord
 	
 	belongs_to :creator, class_name: "User"
 
-	def self.past
-		where(when: ..Time.now)
-	end
+	scope :past, -> { where(when: ..Time.now) }
+	scope :future, -> { where(when: Time.now..) }
 
-	def self.future
-		where(when: Time.now..)
-	end
+	# def self.past
+	# 	where(when: ..Time.now)
+	# end
+
+	# def self.future
+	# 	where(when: Time.now..)
+	# end
 end
