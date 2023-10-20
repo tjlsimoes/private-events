@@ -11,17 +11,6 @@
 <% elsif @event.attendees.where(id: current_user.id).any?%>
 	<p>You signed up for this event!</p>
 <% else %>
-	<!--
-	<%= form_with model: @event_attendance do |form| %>
-		<%= form.hidden_field :attended_event_id, value: @event %>
-		<%= form.hidden_field :attendee_id, value: current_user %>
-		<%= form.submit "Sign up to attend here!" %>
-	<% end %>
--->
-	<form accept-charset="UTF-8" action="/event_attendances" method="post">
-	<input type="hidden" name="attended_event_id" value="<%= @event.id %>">
-	<input type="hidden" name="attendee" value="<%= current_user.id%>">
-  <input type="submit" value="Sign up for attendance here!">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-</form>
+	<%= button_to "Sign up for attendance here!", event_attendances_create_path, 
+				params: {attended_event_id: @event.id, attendee_id: current_user.id} %>
 <% end%>

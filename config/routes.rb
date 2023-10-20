@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'event_attendances/create'
+  post 'event_attendances/create'
   root "events#index"
 
   devise_for :users, controllers: { registrations: 'users/registrations' }, sign_out_via: [:get, :post]
