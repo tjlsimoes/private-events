@@ -14,3 +14,15 @@
 	<%= button_to "Sign up for attendance here!", event_attendances_create_path, 
 				params: {attended_event_id: @event.id, attendee_id: current_user.id} %>
 <% end%>
+<br>
+
+<% if @event.attendees.any? %>
+	<p>Attending:</p>
+	<% @event.attendees.each do |attendee|%>
+		<ul>
+			<li>
+			<p><%= attendee.username %></p>
+			</li>
+		</ul>
+	<% end %>
+<% end %>
