@@ -1,5 +1,5 @@
 <h1>Events</h1>
-
+<!--
 <ul>
 	<% @events.each do |event|%>
 		<li>
@@ -8,3 +8,29 @@
 		</li>
 	<% end %>
 </ul>
+-->
+
+<% if @events.past %>
+	<h2>Past events</h2>
+	<ul>
+		<% @events.past.each do |event|%>
+			<li>
+			<p><%= event.title %></p>
+			<p><%= event.when %></p>
+			</li>
+		<% end %>
+	</ul>
+<% end %>
+<br>
+
+<% if @events.future.any? %>
+	<h2>Future events</h2>
+	<ul>
+		<% @events.future.each do |event|%>
+			<li>
+			<p><%= event.title %></p>
+			<p><%= event.when %></p>
+			</li>
+		<% end %>
+	</ul>
+<% end %>
