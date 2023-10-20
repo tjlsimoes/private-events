@@ -12,12 +12,29 @@
 
 <br>
 
-<h2>Attending events</h2>
-<% @user.attended_events.each do |event|%>
+<% if @user.attended_events.where(when: Time.now..) %>
+	<h2>Attended events</h2>
 	<ul>
-		<li>
-		<p><%= event.title %></p>
-		<p><%= event.when %></p>
-		</li>
+		<% @user.attended_events.where(when: ..Time.now).each do |event|%>
+			<li>
+			<p><%= event.title %></p>
+			<p><%= event.when %></p>
+			</li>
+		<% end %>
 	</ul>
 <% end %>
+<br>
+
+<% if @user.attended_events.where(when: Time.now..).any? %>
+	<h2>Attending future events</h2>
+	<ul>
+		<% @user.attended_events.where(when: Time.now..).each do |event|%>
+			<li>
+			<p><%= event.title %></p>
+			<p><%= event.when %></p>
+			</li>
+		<% end %>
+	</ul>
+<% end %>
+
+<!-- This code could be more efficient... -->
